@@ -1,6 +1,6 @@
 # Objectify Behavior (Plugin CakePHP)
 
-The ObjectifyBehavior aims to convert the usual array that CakePHP return ( e.g, find() ) into an object.
+ObjectifyBehavior aims to convert the usual array that CakePHP return ( e.g, find() ) into an object.
 
 
 ## Requirements
@@ -67,4 +67,4 @@ And that's all. You're now good to go. You can simply access the attributes as a
 
 ## License
 
-You are allowed to use it whatever you want and whenever you want.
+You are allowed to use it for whatever you want and whenever you want.
