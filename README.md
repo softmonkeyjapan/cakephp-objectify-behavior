@@ -27,6 +27,8 @@ In your `Models/Behaviors` directory type:
 
 ## Usage
 
+# Initialization
+
 Go into your model :
 
 	<?php
@@ -44,12 +46,27 @@ Then if it does not exists yet, create the model attribute `actsAs` and add the 
 	}
 	?>
 
+
+# Configuration
+
+By default, the behavior gonna return the data as usual, as an array. To turn `on/off` this feature you can do : 
+
+	<?php
+		// PostsController.php
+		public function index(){
+			$this->Post->objectify( true ); // Enable
+			$this->Post->objectify( false ); // Disable
+		}
+	?>
+
 And that's all. You're now good to go. You can simply access the attributes as an object : 
 
 	<?php
 	class PostsController extends AppController {
 
 		public function index() {
+			$this->Post->objectify( true );
+
 			// Find first
 			$post = $this->Post->find('first');
 			echo $post->name;

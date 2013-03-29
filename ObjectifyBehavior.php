@@ -21,6 +21,14 @@ class ObjectifyBehavior extends ModelBehavior {
 
 
 	/**
+	 * @var boolean Determine if we return
+	 * 		the data as an object or an array
+	 */
+	protected $__isObject = false;
+
+
+
+	/**
 	 * After find method. Called after a find
 	 *
 	 * Turn the array return by default into an object
@@ -30,7 +38,19 @@ class ObjectifyBehavior extends ModelBehavior {
 	 * @param boolean $primary
 	 * @return Object
 	 */
-    function afterFind(Model $model, $results, $primary = false) {
-        return Set::map($results);
-    }   
+    public function afterFind(Model $model, $results, $primary = false) {
+        return $this->__isObject ? Set::map($results) : $results;
+    }
+
+
+
+
+    /**
+     * Method allowing using to switch on/off
+     * the return type
+     * @param boolean $is If true then will return an object
+     */
+    public function objectify ( $is ){
+    	$this->__isObject = $is;
+    }
 }
