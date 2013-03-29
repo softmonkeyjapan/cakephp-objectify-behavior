@@ -27,7 +27,7 @@ In your `Models/Behaviors` directory type:
 
 ## Usage
 
-# Initialization
+### Initialization
 
 Go into your model :
 
@@ -47,7 +47,7 @@ Then if it does not exists yet, create the model attribute `actsAs` and add the 
 	?>
 
 
-# Configuration
+### Configuration
 
 By default, the behavior gonna return the data as usual, as an array. To turn `on/off` this feature you can do : 
 
