@@ -18,7 +18,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 class ObjectifyBehavior extends ModelBehavior {
-
+	
 
 	/**
 	 * @var boolean Determine if we return
@@ -38,19 +38,19 @@ class ObjectifyBehavior extends ModelBehavior {
 	 * @param boolean $primary
 	 * @return Object
 	 */
-    public function afterFind(Model $model, $results, $primary = false) {
-        return $this->__isObject ? Set::map($results) : $results;
-    }
+    	public function afterFind(Model $model, $results, $primary = false) {
+        	return $this->__isObject ? Set::map($results) : $results;
+    	}
 
 
 
 
-    /**
-     * Method allowing using to switch on/off
-     * the return type
-     * @param boolean $is If true then will return an object
-     */
-    public function objectify ( $is ){
-    	$this->__isObject = $is;
-    }
+    	/**
+     	 * Method allowing using to switch on/off
+     	 * the return type
+     	 * @param boolean $is If true then will return an object
+     	 */
+    	public function objectify ( $is ){
+    		$this->__isObject = $is;
+    	}
 }
