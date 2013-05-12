@@ -39,7 +39,7 @@ class ObjectifyBehavior extends ModelBehavior {
 	 * @return Object
 	 */
     	public function afterFind(Model $model, $results, $primary = false) {
-        	return $this->__isObject ? Set::map($results) : $results;
+        	return $this->__isObject ? Set::map($results, $model->name) : $results;
     	}
 
 
