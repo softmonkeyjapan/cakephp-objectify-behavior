@@ -21,8 +21,10 @@ _[GIT Clone]_
 
 In your `Models/Behaviors` directory type:
 
-	git clone -b master git://github.com/SoftMonkeyJapan/ObjectifyBehavior.git
-	cp ObjectifyBehavior/ObjectifyBehavior.php ./ObjectifyBehavior.php
+```bash
+git clone -b master git://github.com/SoftMonkeyJapan/ObjectifyBehavior.git
+cp ObjectifyBehavior/ObjectifyBehavior.php ./ObjectifyBehavior.php
+```
 
 
 ## Usage
@@ -31,55 +33,65 @@ In your `Models/Behaviors` directory type:
 
 Go into your model :
 
-	<?php
-	class Post extends AppModel {
+```php
+<?php
+class Post extends AppModel
+{
 
-	}
-	?>
+}
+```
 
 Then if it does not exists yet, create the model attribute `actsAs` and add the Objectify behavior :
 
-	<?php
-	class Post extends AppModel {
-		
-		$public $actsAs = array('Objectify');
-	}
-	?>
+```php
+<?php
+class Post extends AppModel
+{
+	$public $actsAs = array('Objectify');
+}
+```
 
 
 ### Configuration
 
 By default, the behavior gonna return the data as usual, as an array. To turn `on/off` this feature you can do : 
 
-	<?php
-		// PostsController.php
-		public function index(){
-			$this->Post->objectify( true ); // Enable
-			$this->Post->objectify( false ); // Disable
-		}
-	?>
+```php
+<?php
+class PostsController extends AppController
+{
+	public function index()
+	{
+		$this->Post->objectify(true); // Enable
+		$this->Post->objectify(false); // Disable
+	}
+}
+```
 
 And that's all. You're now good to go. You can simply access the attributes as an object : 
 
-	<?php
-	class PostsController extends AppController {
+```php
+<?php
+class PostsController extends AppController
+{
+	public function index()
+	{
+		$this->Post->objectify(true);
 
-		public function index() {
-			$this->Post->objectify( true );
+		// Find first
+		$post = $this->Post->find('first');
+		echo $post->name;
 
-			// Find first
-			$post = $this->Post->find('first');
+		// Example with a find all
+		$posts = $this->Post->find('all');
+		foreach ($posts as $post)
+		{
 			echo $post->name;
-
-			// Example with a find all
-			$posts = $this->Post->find('all');
-			foreach( $posts as $post ){
-				echo $post->name;
-				echo $post->content;
-			}
+			echo $post->content;
 		}
 	}
-	?>
+}
+```
 
 
 ## License
