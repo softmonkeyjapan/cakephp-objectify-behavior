@@ -17,40 +17,36 @@
  * @link          http://github.com/SoftMonkeyJapan/objectify
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-class ObjectifyBehavior extends ModelBehavior {
-	
-
+class ObjectifyBehavior extends ModelBehavior
+{
 	/**
-	 * @var boolean Determine if we return
-	 * 		the data as an object or an array
+	 * @var boolean
 	 */
-	protected $__isObject = false;
-
-
+	protected $isObject = false;
 
 	/**
 	 * After find method. Called after a find
 	 *
 	 * Turn the array return by default into an object
 	 *
-	 * @param AppModel $model Model instance
-	 * @param array $results Data from database
-	 * @param boolean $primary
+	 * @param  Model  $model
+	 * @param  array  $results
+	 * @param  boolean  $primary
 	 * @return Object
 	 */
-    	public function afterFind(Model $model, $results, $primary = false) {
-        	return $this->__isObject ? Set::map($results, $model->name) : $results;
-    	}
+	public function afterFind(Model $model, $results, $primary = false)
+	{
+		return $this->isObject ? Set::map($results, $model->name) : $results;
+	}
 
-
-
-
-    	/**
-     	 * Method allowing using to switch on/off
-     	 * the return type
-     	 * @param boolean $is If true then will return an object
-     	 */
-    	public function objectify ( $is ){
-    		$this->__isObject = $is;
-    	}
+	/**
+	 * Method allowing to toggle the functionnality
+	 * 
+	 * @param  boolean  $is
+	 * @return void
+	 */
+	public function objectify($is)
+	{
+		$this->isObject = $is;
+	}
 }
